@@ -7,6 +7,8 @@ import RestaurantsScreen from '../screens/Restaurants';
 import TopRestaurantsScreen from '../screens/TopRestaurants';
 import SearchScreen from '../screens/Search';
 import MyAccountScreen from '../screens/Account/MyAccount';
+import LoginScreen from '../screens/Account/Login';
+import RegisterScreen from '../screens/Account/Register';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -39,6 +41,8 @@ function MyAccountStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen name="Mi Cuenta" component={MyAccountScreen} />
+			<Stack.Screen name="Login" component={LoginScreen} />
+			<Stack.Screen name="Registro" component={RegisterScreen} />
 		</Stack.Navigator>
 	);
 }
@@ -57,7 +61,11 @@ export default function Navigation() {
 					component={RestaurantsStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons name="home" color={color} size={size} />
+							<MaterialCommunityIcons
+								name="silverware-fork-knife"
+								color={color}
+								size={size}
+							/>
 						)
 					}}
 				/>
@@ -66,7 +74,7 @@ export default function Navigation() {
 					component={TopRestaurantsStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons name="cup" color={color} size={size} />
+							<MaterialCommunityIcons name="star-outline" color={color} size={size} />
 						)
 					}}
 				/>
@@ -75,7 +83,7 @@ export default function Navigation() {
 					component={SearchRestaurantsStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons name="rocket" color={color} size={size} />
+							<MaterialCommunityIcons name="magnify" color={color} size={size} />
 						)
 					}}
 				/>
@@ -84,7 +92,7 @@ export default function Navigation() {
 					component={MyAccountStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons name="account" color={color} size={size} />
+							<MaterialCommunityIcons name="chef-hat" color={color} size={size} />
 						)
 					}}
 				/>
