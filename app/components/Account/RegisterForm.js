@@ -1,10 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Input, Icon, Button } from 'react-native-elements';
+import { validateEmail } from '../../utils/validation';
+import * as firebase from 'firebase';
+import Loading from '../Loading';
+import { useNavigation } from '@react-navigation/native';
 
-export default function RegisterForm() {
-	const register = () => {
-		console.log('usuario registrado');
+export default function RegisterForm(props) {
+	const navigation = useNavigation();
+	const { toastRef } = props;
+	const [hidePassword, setHidePassword] = useState(true);
+	const [hideRepeatPassword, setHideRepeatPassword] = useState(true);
+	const [isVisible, setIsVisible] = useState(false);
+
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [repeatPassword, setRepeatPassword] = useState('');
+
+	const register = async () => {
+		setIsVisible(true);
+
+		if (!email || !password || !repeatPassword) {
+			toastRef.current.show('Todos los campos son obligatorios');
+		} else {
+			if (!validateEmail(email)) {
+				toastRef.current.show('El email no es correcto');
+			} else {
+				if (password !== repeatPassword) {
+					toastRef.current.show('Las contraseñas no son iguales');
+				} else {
+					await firebase
+						.auth()
+						.createUserWithEmailAndPassword(email, password)
+						.then(() => navigation.navigate('Mi Cuenta'))
+						.catch(err => {
+							if (err.code === 'auth/email-already-in-use') {
+								toastRef.current.show('Ya existe una cuenta con este email', 1500);
+							} else {
+								toastRef.current.show(
+									'Error al crear la cuenta, intentelo más tarde',
+									1500
+								);
+							}
+						});
+				}
+			}
+		}
+		setIsVisible(false);
 	};
 
 	return (
@@ -12,7 +54,7 @@ export default function RegisterForm() {
 			<Input
 				placeholder="Correo Eléctronico"
 				containerStyle={styles.inputForm}
-				onChange={() => console.log('email actualizado')}
+				onChange={e => setEmail(e.nativeEvent.text)}
 				rightIcon={
 					<Icon type="material-community" name="at" iconStyle={styles.iconRight} />
 				}
@@ -20,28 +62,30 @@ export default function RegisterForm() {
 			<Input
 				placeholder="Contraseña"
 				password={true}
-				secureTextEntry={true}
+				secureTextEntry={hidePassword}
 				containerStyle={styles.inputForm}
-				onChange={() => console.log('password actualizado')}
+				onChange={e => setPassword(e.nativeEvent.text)}
 				rightIcon={
 					<Icon
 						type="material-community"
-						name="eye-outline"
+						name={hidePassword ? 'eye-outline' : 'eye-off-outline'}
 						iconStyle={styles.iconRight}
+						onPress={() => setHidePassword(!hidePassword)}
 					/>
 				}
 			/>
 			<Input
 				placeholder="Repetir contraseña"
 				password={true}
-				secureTextEntry={true}
+				secureTextEntry={hideRepeatPassword}
 				containerStyle={styles.inputForm}
-				onChange={() => console.log('repetir password actualizado')}
+				onChange={e => setRepeatPassword(e.nativeEvent.text)}
 				rightIcon={
 					<Icon
 						type="material-community"
-						name="eye-outline"
+						name={hideRepeatPassword ? 'eye-outline' : 'eye-off-outline'}
 						iconStyle={styles.iconRight}
+						onPress={() => setHideRepeatPassword(!hideRepeatPassword)}
 					/>
 				}
 			/>
@@ -51,6 +95,7 @@ export default function RegisterForm() {
 				buttonStyle={styles.btnRegister}
 				onPress={register}
 			/>
+			<Loading text="Creando cuenta" isVisible={isVisible} />
 		</View>
 	);
 }

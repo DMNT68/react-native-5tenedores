@@ -53,7 +53,8 @@ export default function Navigation() {
 			<Tab.Navigator
 				tabBarOptions={{
 					activeTintColor: '#00a680',
-					inactiveTintColor: '#646464'
+					inactiveTintColor: '#646464',
+					keyboardHidesTabBar: true
 				}}
 			>
 				<Tab.Screen
