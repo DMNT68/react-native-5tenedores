@@ -29,11 +29,14 @@ export default function AddRestaurantForm(props) {
 
 	const addRestaurnt = () => {
 		if (!restaurantName || !restaurantAddress || !restaurantDescription) {
-			toastRef.current.show('Todos los campos de formulario son abligatorios');
+			toastRef.current.show(
+				'Todos los campos de formulario son abligatorios',
+				2000
+			);
 		} else if (imagesSelected.length === 0) {
-			toastRef.current.show('El restaurante debe tener almenos una foto');
+			toastRef.current.show('El restaurante debe tener almenos una foto', 2000);
 		} else if (!locationRestaurant) {
-			toastRef.current.show('Tienes que localizar el restaurante en el mapa');
+			toastRef.current.show('Tienes que localizar el restaurante en el mapa', 2000);
 		} else {
 			setIsLoading(true);
 			uploadImageStorage(imagesSelected).then(arrayImages => {
@@ -57,7 +60,8 @@ export default function AddRestaurantForm(props) {
 					.catch(error => {
 						setIsLoading(false);
 						toastRef.current.show(
-							'Error al crear restaurante, intentar más tarde'
+							'Error al crear restaurante, intentar más tarde',
+							2000
 						);
 						console.log(error);
 					});

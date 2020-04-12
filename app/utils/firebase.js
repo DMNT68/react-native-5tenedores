@@ -1,13 +1,13 @@
 import firebase from 'firebase/app';
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyDwIyafMVII1c0nzz6Sd2ZpjHdy4g3aTQ0',
-	authDomain: 'tenedores-3f76a.firebaseapp.com',
-	databaseURL: 'https://tenedores-3f76a.firebaseio.com',
-	projectId: 'tenedores-3f76a',
-	storageBucket: 'tenedores-3f76a.appspot.com',
-	messagingSenderId: '264381927221',
-	appId: '1:264381927221:web:ee2668f0051f578a28867c'
+	apiKey: 'AIzaSyCMDrG4EVFk3Oh_l9O_qYEQi6jV1HFUTVQ',
+	authDomain: 'tenedores-ed850.firebaseapp.com',
+	databaseURL: 'https://tenedores-ed850.firebaseio.com',
+	projectId: 'tenedores-ed850',
+	storageBucket: 'tenedores-ed850.appspot.com',
+	messagingSenderId: '468614830111',
+	appId: '1:468614830111:web:915476cab2005315045d2a'
 };
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
