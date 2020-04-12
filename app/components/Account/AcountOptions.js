@@ -45,7 +45,7 @@ export default function AccountOptions(props) {
 		if (userInfo.providerId !== 'password') {
 			toastRef.current.show(
 				'No puedes cambiar los datos del usuario cuando inicias sesión con una red social',
-				2000
+				2500
 			);
 		} else {
 			switch (key) {

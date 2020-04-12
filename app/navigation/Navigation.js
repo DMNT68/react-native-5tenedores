@@ -9,6 +9,7 @@ import SearchScreen from '../screens/Search';
 import MyAccountScreen from '../screens/Account/MyAccount';
 import LoginScreen from '../screens/Account/Login';
 import RegisterScreen from '../screens/Account/Register';
+import AddRestaurantScreen from '../screens/Restaurants/AddRestaurant';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ function RestaurantsStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen name="Restaurantes" component={RestaurantsScreen} />
+			<Stack.Screen name="Nuevo Restaurante" component={AddRestaurantScreen} />
 		</Stack.Navigator>
 	);
 }
@@ -75,7 +77,11 @@ export default function Navigation() {
 					component={TopRestaurantsStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons name="star-outline" color={color} size={size} />
+							<MaterialCommunityIcons
+								name="star-outline"
+								color={color}
+								size={size}
+							/>
 						)
 					}}
 				/>
@@ -84,7 +90,11 @@ export default function Navigation() {
 					component={SearchRestaurantsStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons name="magnify" color={color} size={size} />
+							<MaterialCommunityIcons
+								name="magnify"
+								color={color}
+								size={size}
+							/>
 						)
 					}}
 				/>
@@ -93,7 +103,11 @@ export default function Navigation() {
 					component={MyAccountStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons name="chef-hat" color={color} size={size} />
+							<MaterialCommunityIcons
+								name="chef-hat"
+								color={color}
+								size={size}
+							/>
 						)
 					}}
 				/>
