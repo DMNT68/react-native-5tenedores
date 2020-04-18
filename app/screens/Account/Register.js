@@ -7,7 +7,7 @@ import Toast from 'react-native-easy-toast';
 export default function Register() {
 	const toastRef = useRef();
 	return (
-		<View>
+		<View style={{ backgroundColor: '#fff' }}>
 			<KeyboardAwareScrollView>
 				<Image
 					source={require('../../../assets/img/logo.png')}

@@ -9,7 +9,7 @@ import LoginFacebook from '../../components/Account/LoginFacebook';
 export default function Login() {
 	const toastRef = useRef();
 	return (
-		<ScrollView>
+		<ScrollView style={{ backgroundColor: '#fff' }}>
 			<Image
 				source={require('../../../assets/img/logo.png')}
 				style={styles.logo}
@@ -33,7 +33,10 @@ function CreateAccount() {
 	return (
 		<Text style={styles.textRegister}>
 			¿Aun no tienes una cuenta?{' '}
-			<Text style={styles.btnRegister} onPress={() => navigation.navigate('Registro')}>
+			<Text
+				style={styles.btnRegister}
+				onPress={() => navigation.navigate('Registro')}
+			>
 				Regístrate
 			</Text>
 		</Text>

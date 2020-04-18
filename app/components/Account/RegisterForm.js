@@ -35,7 +35,10 @@ export default function RegisterForm(props) {
 						.then(() => navigation.navigate('Mi Cuenta'))
 						.catch(err => {
 							if (err.code === 'auth/email-already-in-use') {
-								toastRef.current.show('Ya existe una cuenta con este email', 1500);
+								toastRef.current.show(
+									'Ya existe una cuenta con este email',
+									1500
+								);
 							} else {
 								toastRef.current.show(
 									'Error al crear la cuenta, intentelo más tarde',
@@ -56,7 +59,11 @@ export default function RegisterForm(props) {
 				containerStyle={styles.inputForm}
 				onChange={e => setEmail(e.nativeEvent.text)}
 				rightIcon={
-					<Icon type="material-community" name="at" iconStyle={styles.iconRight} />
+					<Icon
+						type="material-community"
+						name="at"
+						iconStyle={styles.iconRight}
+					/>
 				}
 			/>
 			<Input

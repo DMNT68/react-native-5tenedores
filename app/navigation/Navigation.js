@@ -10,6 +10,7 @@ import MyAccountScreen from '../screens/Account/MyAccount';
 import LoginScreen from '../screens/Account/Login';
 import RegisterScreen from '../screens/Account/Register';
 import AddRestaurantScreen from '../screens/Restaurants/AddRestaurant';
+import RestaurantScreen from '../screens/Restaurants/Restaurant';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -19,6 +20,7 @@ function RestaurantsStack() {
 		<Stack.Navigator>
 			<Stack.Screen name="Restaurantes" component={RestaurantsScreen} />
 			<Stack.Screen name="Nuevo Restaurante" component={AddRestaurantScreen} />
+			<Stack.Screen name="Restaurante" component={RestaurantScreen} />
 		</Stack.Navigator>
 	);
 }

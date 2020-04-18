@@ -2,7 +2,12 @@ import React from 'react';
 import Navigation from './app/navigation/Navigation';
 import { firebaseApp } from './app/utils/firebase';
 import { YellowBox } from 'react-native';
-YellowBox.ignoreWarnings(['Setting a timer']);
+YellowBox.ignoreWarnings([
+	'Setting a timer',
+	'Non-serializable values were found in the navigation state',
+	'componentWillReceiveProps',
+	'componentWillMount'
+]);
 
 import { decode, encode } from 'base-64';
 

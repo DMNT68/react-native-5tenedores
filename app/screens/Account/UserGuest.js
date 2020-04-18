@@ -7,7 +7,7 @@ export default function UserGuest() {
 	const navigation = useNavigation();
 
 	return (
-		<ScrollView centerContent={true}>
+		<ScrollView centerContent={true} style={{ backgroundColor: '#fff' }}>
 			<View style={styles.viewBody}>
 				<Image
 					source={require('../../../assets/img/user-guest.jpg')}
@@ -17,8 +17,8 @@ export default function UserGuest() {
 				<Text style={styles.title}>Consulta tu perfil de 5 tenedores</Text>
 				<Text style={styles.description}>
 					¿Como describirias tu mejor restaurante? Busca y visualiza los mejores
-					restaurantes de una forma sencilla, vota cual te ha gustado más y comenta como
-					ha sido tu experiencia.
+					restaurantes de una forma sencilla, vota cual te ha gustado más y
+					comenta como ha sido tu experiencia.
 				</Text>
 				<View style={styles.viewBtn}>
 					<Button
