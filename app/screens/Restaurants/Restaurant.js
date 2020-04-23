@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import CarouselImages from '../../components/CarouselImages';
 import { Rating, ListItem } from 'react-native-elements';
 import Map from '../../components/Map';
+import ListReviews from '../../components/Restaunrants/ListReviews';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -12,6 +13,7 @@ export default function Restaurant(props) {
 	const { restaurant } = route.params.restaurant.item;
 
 	const [imagesRestaurant, setImagesRestaurant] = useState([]);
+	const [rating, setRating] = useState(restaurant.rating);
 
 	useEffect(() => {
 		const arrayUrls = [];
@@ -41,12 +43,17 @@ export default function Restaurant(props) {
 			<TitleRestaurant
 				name={restaurant.name}
 				description={restaurant.description}
-				rating={restaurant.rating}
+				rating={rating}
 			/>
 			<RestaurantInfo
 				location={restaurant.location}
 				name={restaurant.name}
 				address={restaurant.address}
+			/>
+			<ListReviews
+				navigation={navigation}
+				idRestaurant={restaurant.id}
+				setRating={setRating}
 			/>
 		</ScrollView>
 	);
