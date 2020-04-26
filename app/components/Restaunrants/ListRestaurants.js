@@ -52,7 +52,11 @@ function Restaurant(props) {
 
 	return (
 		<TouchableOpacity
-			onPress={() => navigation.navigate('Restaurante', { restaurant })}
+			onPress={() =>
+				navigation.navigate('Restaurante', {
+					restaurant: restaurant.item.restaurant
+				})
+			}
 		>
 			<View style={styles.viewRestaurant}>
 				<View style={styles.viewRestaurantImage}>

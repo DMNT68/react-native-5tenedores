@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, FlatList } from 'react-native';
-import { Button, Avatar, Rating } from 'react-native-elements';
+import { StyleSheet, View, Text, FlatList, VirtualizedList } from 'react-native';
+import { Button, Avatar, Rating, ListItem } from 'react-native-elements';
 
 import { firebaseApp } from '../../utils/firebase';
 import firebase from 'firebase/app';
@@ -81,11 +81,12 @@ export default function ListReviews(props) {
 					</Text>
 				</View>
 			)}
-			<FlatList
+			{/* <FlatList
 				data={reviews}
 				renderItem={review => <Review review={review} />}
 				keyExtractor={(item, index) => index.toString()}
-			/>
+			/> */}
+			<Reviews reviews={reviews} />
 		</View>
 	);
 }
@@ -120,6 +121,44 @@ function Review(props) {
 					{dateReview.getMinutes()}
 				</Text>
 			</View>
+		</View>
+	);
+}
+
+function Reviews(props) {
+	const { reviews } = props;
+
+	return (
+		<View>
+			{reviews.map((item, index) => {
+				const dateReview = new Date(item.createAt.seconds * 1000);
+				return (
+					<ListItem
+						key={index}
+						leftAvatar={{
+							source: {
+								uri: item.avatarUser
+									? item.avatarUser
+									: 'https://api.adorable.io/avatars/285/as.png'
+							}
+						}}
+						title={item.title}
+						rightTitle={
+							<Rating imageSize={15} startingValue={item.rating} readonly />
+						}
+						subtitle={item.review}
+						rightSubtitle={
+							<Text style={{ marginTop: 5, fontSize: 10, color: 'grey' }}>
+								{dateReview.getDate()}/{dateReview.getMonth() + 1}/
+								{dateReview.getFullYear()} - {dateReview.getHours()}:
+								{dateReview.getMinutes() < 10 ? '0' : ''}
+								{dateReview.getMinutes()}
+							</Text>
+						}
+						bottomDivider
+					/>
+				);
+			})}
 		</View>
 	);
 }

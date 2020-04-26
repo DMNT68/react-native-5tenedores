@@ -12,6 +12,7 @@ import RegisterScreen from '../screens/Account/Register';
 import AddRestaurantScreen from '../screens/Restaurants/AddRestaurant';
 import RestaurantScreen from '../screens/Restaurants/Restaurant';
 import AddReviewRestaurant from '../screens/Restaurants/AddReviewRestaurant';
+import FavoritesScreen from '../screens/Restaurants/Favorites';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -26,6 +27,14 @@ function RestaurantsStack() {
 				name="Agregar Review Restaurante"
 				component={AddReviewRestaurant}
 			/>
+		</Stack.Navigator>
+	);
+}
+
+function FavoritesStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen name="Favoritos" component={FavoritesScreen} />
 		</Stack.Navigator>
 	);
 }
@@ -72,7 +81,7 @@ export default function Navigation() {
 					options={{
 						tabBarIcon: ({ color, size }) => (
 							<MaterialCommunityIcons
-								name="silverware-fork-knife"
+								name="home-outline"
 								color={color}
 								size={size}
 							/>
@@ -80,7 +89,20 @@ export default function Navigation() {
 					}}
 				/>
 				<Tab.Screen
-					name="Top Restaurantes"
+					name="Favoritos"
+					component={FavoritesStack}
+					options={{
+						tabBarIcon: ({ color, size }) => (
+							<MaterialCommunityIcons
+								name="heart-outline"
+								color={color}
+								size={size}
+							/>
+						)
+					}}
+				/>
+				<Tab.Screen
+					name="Ranking"
 					component={TopRestaurantsStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
@@ -106,12 +128,12 @@ export default function Navigation() {
 					}}
 				/>
 				<Tab.Screen
-					name="Mi Cuenta"
+					name="Cuenta"
 					component={MyAccountStack}
 					options={{
 						tabBarIcon: ({ color, size }) => (
 							<MaterialCommunityIcons
-								name="chef-hat"
+								name="account-circle-outline"
 								color={color}
 								size={size}
 							/>
