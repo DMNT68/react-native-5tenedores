@@ -4,13 +4,17 @@ import { Card, Icon, Image, Rating } from 'react-native-elements';
 import * as firebase from 'firebase';
 
 export default function ListTopRestaurants(props) {
-	const { restaurants, navigation } = props;
+	const { restaurants, navigation, toastRef } = props;
 
 	return (
 		<FlatList
 			data={restaurants}
 			renderItem={restaurant => (
-				<Restaurant restaurant={restaurant} navigation={navigation} />
+				<Restaurant
+					restaurant={restaurant}
+					navigation={navigation}
+					toastRef={toastRef}
+				/>
 			)}
 			keyExtractor={(item, index) => index.toString()}
 		/>
@@ -18,11 +22,12 @@ export default function ListTopRestaurants(props) {
 }
 
 function Restaurant(props) {
-	const { restaurant, navigation } = props;
+	const { restaurant, navigation, toastRef } = props;
 	const { name, description, images, rating } = restaurant.item;
 
 	const [imageRestaurant, setImageRestaurant] = useState(null);
 	const [iconColor, setIconColor] = useState('#000');
+	const [place, setPlace] = useState('Restaurante en el top 5');
 
 	useEffect(() => {
 		const image = images[0];
@@ -38,10 +43,13 @@ function Restaurant(props) {
 	useEffect(() => {
 		if (restaurant.index === 0) {
 			setIconColor('#efb819');
+			setPlace('Restaurante en primer lugar');
 		} else if (restaurant.index === 1) {
-			setIconColor('#e3e4e5');
+			setIconColor('#C7C8CA');
+			setPlace('Restaurante en segundo lugar');
 		} else if (restaurant.index === 2) {
 			setIconColor('#cd7f32');
+			setPlace('Restaurante en tercer lugar');
 		}
 	}, []);
 
@@ -54,13 +62,6 @@ function Restaurant(props) {
 			}
 		>
 			<Card containerStyle={styles.constainerCard}>
-				<Icon
-					type="material-community"
-					name="chess-queen"
-					color={iconColor}
-					size={40}
-					containerStyle={styles.containerIcon}
-				/>
 				<Image
 					style={styles.image}
 					resizeMode="cover"
@@ -68,13 +69,21 @@ function Restaurant(props) {
 				/>
 				<View style={styles.titleRanking}>
 					<Text style={styles.title}>{name}</Text>
-					<Rating
-						imageSize={20}
-						startingValue={rating}
-						readonly
-						style={styles.rating}
+					<Icon
+						type="material-community"
+						name="medal"
+						color={iconColor}
+						size={30}
+						containerStyle={styles.containerIcon}
+						onPress={() => toastRef.current.show(place)}
 					/>
 				</View>
+				<Rating
+					imageSize={15}
+					startingValue={rating}
+					readonly
+					style={styles.rating}
+				/>
 				<Text style={styles.description}>{description}</Text>
 			</Card>
 		</TouchableOpacity>
@@ -83,7 +92,7 @@ function Restaurant(props) {
 
 const styles = StyleSheet.create({
 	constainerCard: {
-		marginBottom: 30,
+		marginBottom: 5,
 		borderWidth: 0
 	},
 	image: {
@@ -99,8 +108,8 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	rating: {
-		position: 'absolute',
-		right: 0
+		position: 'relative',
+		alignItems: 'flex-start'
 	},
 	description: {
 		color: 'grey',
@@ -109,8 +118,6 @@ const styles = StyleSheet.create({
 	},
 	containerIcon: {
 		position: 'absolute',
-		top: -30,
-		left: -30,
-		zIndex: 1
+		right: 0
 	}
 });

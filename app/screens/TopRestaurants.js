@@ -43,7 +43,11 @@ export default function TopRestaurants(props) {
 
 	return (
 		<View>
-			<ListTopRestaurants restaurants={restaurants} navigation={navigation} />
+			<ListTopRestaurants
+				restaurants={restaurants}
+				navigation={navigation}
+				toastRef={toastRef}
+			/>
 			<Toast ref={toastRef} position="center" opacity={0.8} />
 		</View>
 	);
