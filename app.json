@@ -18,10 +18,11 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
-			"bundleIdentifier": "com.aeseace.5tenedores",
+			"bundleIdentifier": "com.aeseace.cincotenedores",
 			"supportsTablet": false
 		},
 		"android": {
+			"package": "com.aeseace.cincotenedores",
 			"permissions": ["CAMERA_ROLL", "LOCATION"]
 		},
 		"description": ""
