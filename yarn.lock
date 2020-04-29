@@ -2408,6 +2408,11 @@ core-js@^2.2.2, core-js@^2.4.1:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
   integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
 
+core-js@^3.0.1:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
+  integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
+
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -3092,6 +3097,13 @@ firebase@^7.13.1:
     "@firebase/remote-config" "0.1.17"
     "@firebase/storage" "0.3.30"
     "@firebase/util" "0.2.43"
+
+firesql@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/firesql/-/firesql-2.0.2.tgz#0d69130d9ad65a13ad219fabcd9ba2cb9587b668"
+  integrity sha512-3HipSyyJlVTIESHt5OQ0YhCvclm1FV4J2zcPg9I9xpJGjrTn7Gi7tZFniKbgeg1kYS5k5htDvxEQbPfHiHMWBg==
+  dependencies:
+    core-js "^3.0.1"
 
 fontfaceobserver@^2.1.0:
   version "2.1.0"
@@ -6105,6 +6117,11 @@ url-parse@^1.4.4:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
+
+use-debounce@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-3.4.2.tgz#f4333cca59504244b916159600427bf977ec4c46"
+  integrity sha512-rW44wZaFPh3XiwUzGBA0JRuklpbfKO/szU/5CYD2Q/erLmCem63lJ650p3a+NJE6S+g0rulKtBOfa/3rw/GN+Q==
 
 use-subscription@^1.4.0:
   version "1.4.1"
