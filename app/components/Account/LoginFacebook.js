@@ -16,17 +16,12 @@ export default function LoginFacebook(props) {
 		setIsLoading(true);
 		try {
 			await Facebook.initializeAsync(facebookApi.application_id);
-			const {
-				type,
-				token,
-				expires,
-				permissions,
-				declinedPermissions
-			} = await Facebook.logInWithReadPermissionsAsync({
+
+			const { type, token } = await Facebook.logInWithReadPermissionsAsync({
 				permissions: facebookApi.permissions
 			});
+
 			if (type === 'success') {
-				// Get the user's name using Facebook's Graph API
 				const response = await fetch(
 					`https://graph.facebook.com/me?access_token=${token}`
 				);
@@ -36,16 +31,21 @@ export default function LoginFacebook(props) {
 					.signInWithCredential(credentials)
 					.then(() => navigation.navigate('Mi Cuenta'))
 					.catch(() => {
-						toastRef.current.show('Error accediendo con Facebook... intentelo mas tarde');
+						toastRef.current.show(
+							'Error accediendo con Facebook... intentelo mas tarde'
+						);
 					});
-				Alert.alert('Inicio de sesión correcto', `Hola ${(await response.json()).name}!`);
+				Alert.alert(
+					'Inicio de sesión correcto',
+					`Hola ${(await response.json()).name}!`
+				);
 			} else {
 				if (type === 'cancel') {
 					toastRef.current.show('Inicio de sesión cancelado');
 				}
 			}
 		} catch ({ message }) {
-			toastRef.current.show(`Facebook Login Error: ${message}`);
+			toastRef.current.show(`Error desconocido, intentolo más tarde: ${message}`);
 		}
 		setIsLoading(false);
 	};
