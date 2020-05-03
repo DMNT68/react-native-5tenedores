@@ -1,146 +1,96 @@
 import React from 'react';
+
+// React Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+
+// React native elements
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
-import RestaurantsScreen from '../screens/Restaurants';
-import TopRestaurantsScreen from '../screens/TopRestaurants';
-import SearchScreen from '../screens/Search';
-import MyAccountScreen from '../screens/Account/MyAccount';
-import LoginScreen from '../screens/Account/Login';
-import RegisterScreen from '../screens/Account/Register';
-import AddRestaurantScreen from '../screens/Restaurants/AddRestaurant';
-import RestaurantScreen from '../screens/Restaurants/Restaurant';
-import AddReviewRestaurant from '../screens/Restaurants/AddReviewRestaurant';
-import FavoritesScreen from '../screens/Restaurants/Favorites';
+import { Icon } from 'react-native-elements';
+
+// Stacks
+import RestaurantsStack from './RestaurantsStack';
+import TopRestaurantsStack from './TopRestaurantsStack';
+import FavoritesStack from './FavoritesStack';
+import SearchStack from './SearchStack';
+import AccountStack from './AccountStack';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-
-function RestaurantsStack() {
-	return (
-		<Stack.Navigator>
-			<Stack.Screen name="Restaurantes" component={RestaurantsScreen} />
-			<Stack.Screen name="Nuevo Restaurante" component={AddRestaurantScreen} />
-			<Stack.Screen name="Restaurante" component={RestaurantScreen} />
-			<Stack.Screen
-				name="Agregar Review Restaurante"
-				component={AddReviewRestaurant}
-			/>
-		</Stack.Navigator>
-	);
-}
-
-function FavoritesStack() {
-	return (
-		<Stack.Navigator>
-			<Stack.Screen name="Favoritos" component={FavoritesScreen} />
-		</Stack.Navigator>
-	);
-}
-
-function TopRestaurantsStack() {
-	return (
-		<Stack.Navigator>
-			<Stack.Screen name="Top 5" component={TopRestaurantsScreen} />
-		</Stack.Navigator>
-	);
-}
-
-function SearchRestaurantsStack() {
-	return (
-		<Stack.Navigator>
-			<Stack.Screen name="Buscar" component={SearchScreen} />
-		</Stack.Navigator>
-	);
-}
-
-function MyAccountStack() {
-	return (
-		<Stack.Navigator>
-			<Stack.Screen name="Mi Cuenta" component={MyAccountScreen} />
-			<Stack.Screen name="Login" component={LoginScreen} />
-			<Stack.Screen name="Registro" component={RegisterScreen} />
-		</Stack.Navigator>
-	);
-}
 
 export default function Navigation() {
 	return (
 		<NavigationContainer>
 			<Tab.Navigator
+				initialRouteName="restaurants"
 				tabBarOptions={{
 					activeTintColor: '#00a680',
 					inactiveTintColor: '#646464',
 					keyboardHidesTabBar: true
 				}}
+				screenOptions={({ route }) => ({
+					tabBarIcon: ({ color }) => screenOptions(route, color)
+				})}
 			>
 				<Tab.Screen
-					name="Restaurantes"
+					name="restaurants"
 					component={RestaurantsStack}
-					options={{
-						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons
-								name="home-outline"
-								color={color}
-								size={size}
-							/>
-						)
-					}}
+					options={{ title: 'Restaurantes' }}
 				/>
 				<Tab.Screen
-					name="Favoritos"
+					name="favorites"
 					component={FavoritesStack}
 					options={{
-						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons
-								name="heart-outline"
-								color={color}
-								size={size}
-							/>
-						)
+						title: 'Favoritos'
+						// tabBarIcon: ({ color, size }) => (
+						// 	<MaterialCommunityIcons
+						// 		name="heart-outline"
+						// 		color={color}
+						// 		size={size}
+						// 	/>
+						// )
 					}}
 				/>
 				<Tab.Screen
-					name="Ranking"
+					name="ranking"
 					component={TopRestaurantsStack}
-					options={{
-						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons
-								name="star-outline"
-								color={color}
-								size={size}
-							/>
-						)
-					}}
+					options={{ title: 'Ranking' }}
 				/>
 				<Tab.Screen
-					name="Buscar"
-					component={SearchRestaurantsStack}
-					options={{
-						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons
-								name="magnify"
-								color={color}
-								size={size}
-							/>
-						)
-					}}
+					name="search"
+					component={SearchStack}
+					options={{ title: 'Buscar' }}
 				/>
 				<Tab.Screen
-					name="Cuenta"
-					component={MyAccountStack}
-					options={{
-						tabBarIcon: ({ color, size }) => (
-							<MaterialCommunityIcons
-								name="account-circle-outline"
-								color={color}
-								size={size}
-							/>
-						)
-					}}
+					name="account"
+					component={AccountStack}
+					options={{ title: 'Cuenta' }}
 				/>
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
+}
+
+function screenOptions(route, color) {
+	let iconName;
+	switch (route.name) {
+		case 'restaurants':
+			iconName = 'home-outline';
+			break;
+		case 'favorites':
+			iconName = 'heart-outline';
+			break;
+		case 'ranking':
+			iconName = 'star-outline';
+			break;
+		case 'search':
+			iconName = 'magnify';
+			break;
+		case 'account':
+			iconName = 'account-circle-outline';
+			break;
+
+		default:
+			break;
+	}
+	return <Icon type="material-community" name={iconName} size={24} color={color} />;
 }

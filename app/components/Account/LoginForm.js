@@ -27,7 +27,7 @@ export default function LoginForm(props) {
 				await firebase
 					.auth()
 					.signInWithEmailAndPassword(email, password)
-					.then(() => navigation.navigate('Mi Cuenta'))
+					.then(() => navigation.navigate('my-account'))
 					.catch(() => toastRef.current.show('Email o contraseña incorrecto'));
 			}
 		}
@@ -41,7 +41,11 @@ export default function LoginForm(props) {
 				containerStyle={styles.inputForm}
 				onChange={e => setEmail(e.nativeEvent.text)}
 				rightIcon={
-					<Icon type="material-community" name="at" iconStyle={styles.iconRight} />
+					<Icon
+						type="material-community"
+						name="at"
+						iconStyle={styles.iconRight}
+					/>
 				}
 			/>
 			<Input
@@ -78,8 +82,7 @@ const styles = StyleSheet.create({
 		marginTop: 30
 	},
 	inputForm: {
-		width: '100%',
-		marginTop: 20
+		width: '100%'
 	},
 	iconRight: {
 		color: '#c1c1c1'

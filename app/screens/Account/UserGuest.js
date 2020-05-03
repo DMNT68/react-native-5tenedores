@@ -25,7 +25,7 @@ export default function UserGuest() {
 						buttonStyle={styles.btnStyle}
 						containerStyle={styles.btnContainer}
 						title="Ver tu perfil"
-						onPress={() => navigation.navigate('Login')}
+						onPress={() => navigation.navigate('login')}
 					/>
 				</View>
 			</View>

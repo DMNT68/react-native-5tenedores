@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { FloatingAction } from 'react-native-floating-action';
-import ListRestaurants from '../../components/Restaunrants/ListRestaurants';
+import ListRestaurants from '../../components/Restaurants/ListRestaurants';
 // import * as firebase from 'firebase';
 import { firebaseApp } from '../../utils/firebase';
 import firebase from 'firebase/app';
@@ -123,7 +123,7 @@ function AddRestaurantButton(props) {
 			actions={actions}
 			color="#00a680"
 			onPressItem={name => {
-				navigation.navigate('Nuevo Restaurante', { setIsReloadRestaurants });
+				navigation.navigate('add-restaurant', { setIsReloadRestaurants });
 			}}
 		/>
 	);

@@ -53,7 +53,7 @@ function Restaurant(props) {
 	return (
 		<TouchableOpacity
 			onPress={() =>
-				navigation.navigate('Restaurante', {
+				navigation.navigate('restaurant', {
 					restaurant: restaurant.item.restaurant
 				})
 			}
@@ -89,7 +89,7 @@ function FooterList(props) {
 		);
 	} else {
 		return (
-			<View style={styles.notFoundRestaunrants}>
+			<View style={styles.notFoundRestaurants}>
 				<Text>No quedan restaurantes por cargar</Text>
 			</View>
 		);
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		marginBottom: 10
 	},
-	notFoundRestaunrants: {
+	notFoundRestaurants: {
 		marginTop: 10,
 		marginBottom: 20,
 		alignItems: 'center'

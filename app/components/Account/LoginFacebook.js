@@ -29,7 +29,7 @@ export default function LoginFacebook(props) {
 				await firebase
 					.auth()
 					.signInWithCredential(credentials)
-					.then(() => navigation.navigate('Mi Cuenta'))
+					.then(() => navigation.navigate('my-account'))
 					.catch(() => {
 						toastRef.current.show(
 							'Error accediendo con Facebook... intentelo mas tarde'
@@ -51,7 +51,7 @@ export default function LoginFacebook(props) {
 	};
 
 	return (
-		<View>
+		<View style={{ marginBottom: 10 }}>
 			<SocialIcon title="Iniciar sesión" button type="facebook" onPress={login} />
 			<Loading isVisible={isLoading} text="iniciando sesión" />
 		</View>

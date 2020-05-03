@@ -35,7 +35,7 @@ function CreateAccount() {
 			¿Aun no tienes una cuenta?{' '}
 			<Text
 				style={styles.btnRegister}
-				onPress={() => navigation.navigate('Registro')}
+				onPress={() => navigation.navigate('register')}
 			>
 				Regístrate
 			</Text>
@@ -64,6 +64,9 @@ const styles = StyleSheet.create({
 	},
 	divider: {
 		backgroundColor: '#00a680',
-		margin: 40
+		marginTop: 20,
+		marginLeft: 40,
+		marginRight: 40,
+		marginBottom: 20
 	}
 });

@@ -56,7 +56,7 @@ export default function AddRestaurantForm(props) {
 					.then(() => {
 						setIsLoading(false);
 						setIsReloadRestaurants(true);
-						navigation.navigate('Restaurantes');
+						navigation.navigate('restaurants');
 					})
 					.catch(error => {
 						setIsLoading(false);

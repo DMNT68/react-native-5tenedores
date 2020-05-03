@@ -1,30 +1,38 @@
 {
-	"expo": {
-		"name": "5 Tenedores",
-		"slug": "5-tenedores",
-		"privacy": "public",
-		"sdkVersion": "36.0.0",
-		"platforms": ["ios", "android", "web"],
-		"version": "1.0.0",
-		"orientation": "portrait",
-		"icon": "./assets/icon.png",
-		"splash": {
-			"image": "./assets/splash.png",
-			"resizeMode": "contain",
-			"backgroundColor": "#00a680"
-		},
-		"updates": {
-			"fallbackToCacheTimeout": 0
-		},
-		"assetBundlePatterns": ["**/*"],
-		"ios": {
-			"bundleIdentifier": "com.aeseace.cincotenedores",
-			"supportsTablet": false
-		},
-		"android": {
-			"package": "com.aeseace.cincotenedores",
-			"permissions": ["CAMERA_ROLL", "LOCATION"]
-		},
-		"description": ""
-	}
+  "expo": {
+    "name": "5 Tenedores",
+    "slug": "5-tenedores",
+    "privacy": "public",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#00a680"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.aeseace.cincotenedores",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.aeseace.cincotenedores",
+      "permissions": [
+        "CAMERA_ROLL",
+        "LOCATION"
+      ]
+    },
+    "description": ""
+  }
 }

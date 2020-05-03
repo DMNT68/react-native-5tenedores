@@ -73,7 +73,7 @@ function Restaurant(props) {
 			leftAvatar={{ source: { uri: imageRestaurant } }}
 			rightIcon={<Icon type="material-community" name="chevron-right" />}
 			onPress={() =>
-				navigation.navigate('Restaurante', {
+				navigation.navigate('restaurant', {
 					restaurant: restaurant.item
 				})
 			}

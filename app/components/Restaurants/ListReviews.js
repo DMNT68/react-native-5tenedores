@@ -61,7 +61,7 @@ export default function ListReviews(props) {
 						color: '#00a680'
 					}}
 					onPress={() =>
-						navigation.navigate('Agregar Review Restaurante', {
+						navigation.navigate('add-review', {
 							idRestaurant: idRestaurant,
 							setReviewsReload: setReviewsReload
 						})

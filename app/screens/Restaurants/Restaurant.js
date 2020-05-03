@@ -6,7 +6,7 @@ import Toast from 'react-native-easy-toast';
 // Components
 import CarouselImages from '../../components/CarouselImages';
 import Map from '../../components/Map';
-import ListReviews from '../../components/Restaunrants/ListReviews';
+import ListReviews from '../../components/Restaurants/ListReviews';
 
 // Firebase config
 import { firebaseApp } from '../../utils/firebase';

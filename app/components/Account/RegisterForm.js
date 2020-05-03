@@ -32,7 +32,7 @@ export default function RegisterForm(props) {
 					await firebase
 						.auth()
 						.createUserWithEmailAndPassword(email, password)
-						.then(() => navigation.navigate('Mi Cuenta'))
+						.then(() => navigation.navigate('my-account'))
 						.catch(err => {
 							if (err.code === 'auth/email-already-in-use') {
 								toastRef.current.show(
@@ -112,11 +112,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		marginTop: 30
+		marginTop: 30,
+		marginBottom: 30
 	},
 	inputForm: {
-		width: '100%',
-		marginTop: 20
+		width: '100%'
 	},
 	iconRight: {
 		color: '#c1c1c1'

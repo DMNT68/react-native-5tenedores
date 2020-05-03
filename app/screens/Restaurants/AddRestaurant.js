@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Toast from 'react-native-easy-toast';
 import Loading from '../../components/Loading';
-import AddRestaurantForm from '../../components/Restaunrants/AddRestaurantForm';
+import AddRestaurantForm from '../../components/Restaurants/AddRestaurantForm';
 
 export default function AddRestaurant(props) {
 	const { navigation, route } = props;
