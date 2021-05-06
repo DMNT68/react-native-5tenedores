@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import * as firebase from 'firebase';
 import { View, Text } from 'react-native';
+
+import * as firebase from 'firebase';
+
 import Loading from '../../components/Loading';
+
 import UserGuest from './UserGuest';
 import UserLogged from './UserLogged';
 
 export default function MyAccountScreen() {
 	const [login, setLogin] = useState(null);
+
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged(user => {
 			if (!user) {
